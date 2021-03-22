@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: example.micronaut
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle
+features: [app-name, aws-lambda, graalvm, gradle, java, java-application, junit, logback, readme, shade, yaml]

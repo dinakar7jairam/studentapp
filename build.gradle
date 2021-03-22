@@ -1,0 +1,40 @@
+plugins {
+    id("com.github.johnrengelman.shadow") version "6.1.0"
+    id("io.micronaut.application") version "1.4.2"
+}
+
+version = "0.1"
+group = "example.micronaut"
+
+repositories {
+    mavenCentral()
+}
+
+micronaut {
+    runtime("lambda")
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("example.micronaut.*")
+    }
+}
+
+dependencies {
+    implementation("io.micronaut:micronaut-runtime")
+    compileOnly("org.graalvm.nativeimage:svm")
+    implementation("io.micronaut:micronaut-validation")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    testImplementation("io.micronaut:micronaut-http-client")
+}
+
+
+application {
+    mainClass.set("example.micronaut.Application")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion("1.8")
+    targetCompatibility = JavaVersion.toVersion("1.8")
+}
+
+
+
